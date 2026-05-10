@@ -1,28 +1,28 @@
-# Snake Game
+# Sales Dashboard
 
-A modern dark-themed Snake Game developed using HTML, CSS, and JavaScript. The game features smooth snake movement, food collection mechanics, score tracking, responsive controls, and a clean futuristic user interface inspired by minimalist arcade-style gameplay.
+A modern and interactive Sales Dashboard developed using Python, Streamlit, Pandas, and Plotly. The application provides real-time sales analysis, business insights, data visualization, and performance tracking through a clean and responsive user interface.
 
 ---
 
 ## Features
 
-- Snake movement using arrow keys or WASD
-- Food collection system
-- Real-time score tracking
-- Best score display
-- Pause and restart functionality
-- Game over detection
-- Responsive touch controls for mobile devices
-- Smooth gameplay experience
-- Dark futuristic UI design
+- Interactive sales data visualization
+- Real-time dashboard analytics
+- Revenue and profit analysis
+- Sales performance tracking
+- Dynamic charts and graphs
+- Data filtering and sorting
+- Responsive and user-friendly interface
+- Business insights generation
 
 ---
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript
+- Python
+- Streamlit
+- Pandas
+- Plotly
 
 ---
 
@@ -35,19 +35,8 @@ A modern dark-themed Snake Game developed using HTML, CSS, and JavaScript. The g
 
 ## Objective
 
-The objective of the game is to control the snake, collect food to increase the score, and avoid collisions with walls or the snake’s own body.
+The objective of this project is to analyze and visualize sales data effectively, helping users understand business performance, identify trends, and make data-driven decisions through interactive dashboards and charts.
 
 ---
 
-## Project Structure
 
-```bash
-snake_game/
-│
-├── screenshots/
-│   └── image.png
-├── index.html
-├── style.css
-├── script.js
-└── README.md
-```
