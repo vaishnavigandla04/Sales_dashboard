@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="app" id="app">
+        <header class="topbar">
+            <div>
+                <h1>Sales Dashboard</h1>
+                <p class="subtitle">Track revenue, profit, orders, regional demand, category mix, and product performance from one interactive view.</p>
+            </div>
+            <aside class="status-card" aria-label="Dashboard status">
+                <p class="status-label">Data refreshed</p>
+                <p class="status-value" id="updatedText">May 9, 2026</p>
+            </aside>
+        </header>
+
+        <section class="controls" aria-label="Dashboard filters">
+            <div class="field">
+                <label for="startDate">Start date</label>
+                <input type="date" id="startDate" value="2025-01-01">
+            </div>
+            <div class="field">
+                <label for="endDate">End date</label>
+                <input type="date" id="endDate" value="2025-12-31">
+            </div>
+            <div class="field">
+                <label for="regionFilter">Region</label>
+                <select id="regionFilter">
+                    <option value="all">All regions</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="categoryFilter">Category</label>
+                <select id="categoryFilter">
+                    <option value="all">All categories</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="channelFilter">Channel</label>
+                <select id="channelFilter">
+                    <option value="all">All channels</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="sortTable">Table sort</label>
+                <select id="sortTable">
+                    <option value="revenue">Revenue</option>
+                    <option value="profit">Profit</option>
+                    <option value="orders">Orders</option>
+                    <option value="margin">Margin</option>
+                </select>
+            </div>
+            <button type="button" id="resetFilters" class="secondary">Reset</button>
+        </section>
+
+        <section class="kpis" aria-label="Sales KPI summary">
+            <article class="kpi">
+                <p class="kpi-label">Revenue</p>
+                <p class="kpi-value" id="revenueKpi">$0</p>
+                <p class="kpi-note" id="revenueNote">Filtered total</p>
+            </article>
+            <article class="kpi">
+                <p class="kpi-label">Profit</p>
+                <p class="kpi-value" id="profitKpi">$0</p>
+                <p class="kpi-note" id="marginNote">Margin 0%</p>
+            </article>
+            <article class="kpi">
+                <p class="kpi-label">Orders</p>
+                <p class="kpi-value" id="ordersKpi">0</p>
+                <p class="kpi-note" id="recordsNote">0 records</p>
+            </article>
+            <article class="kpi">
+                <p class="kpi-label">Average Order</p>
+                <p class="kpi-value" id="aovKpi">$0</p>
+                <p class="kpi-note">Revenue per order</p>
+            </article>
+            <article class="kpi">
+                <p class="kpi-label">Best Region</p>
+                <p class="kpi-value" id="bestRegionKpi">-</p>
+                <p class="kpi-note" id="bestRegionNote">By revenue</p>
+            </article>
+        </section>
+
+        <div class="empty" id="emptyState">No sales records match the selected filters.</div>
+
+        <section class="main-grid" aria-label="Sales dashboard charts and tables">
+            <article class="panel wide">
+                <div class="panel-head">
+                    <h2>Revenue Trend</h2>
+                    <span class="panel-meta">Monthly revenue and profit</span>
+                </div>
+                <div class="chart-wrap"><canvas id="revenueTrendChart"></canvas></div>
+            </article>
+
+            <article class="panel small">
+                <div class="panel-head">
+                    <h2>Executive Insights</h2>
+                    <span class="panel-meta">Auto summary</span>
+                </div>
+                <ul class="insights" id="insightsList"></ul>
+            </article>
+
+            <article class="panel small">
+                <div class="panel-head">
+                    <h2>Region Mix</h2>
+                    <span class="panel-meta">Revenue share</span>
+                </div>
+                <div class="chart-wrap"><canvas id="regionChart"></canvas></div>
+            </article>
+
+            <article class="panel medium">
+                <div class="panel-head">
+                    <h2>Category Sales</h2>
+                    <span class="panel-meta">Revenue by product group</span>
+                </div>
+                <div class="chart-wrap"><canvas id="categoryChart"></canvas></div>
+            </article>
+
+            <article class="panel small">
+                <div class="panel-head">
+                    <h2>Channel Performance</h2>
+                    <span class="panel-meta">Revenue and orders</span>
+                </div>
+                <div class="chart-wrap"><canvas id="channelChart"></canvas></div>
+            </article>
+
+            <article class="panel full">
+                <div class="panel-head">
+                    <h2>Sales Records</h2>
+                    <span class="panel-meta" id="tableMeta">Sorted by revenue</span>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Product</th>
+                                <th>Region</th>
+                                <th>Category</th>
+                                <th>Channel</th>
+                                <th class="numeric">Orders</th>
+                                <th class="numeric">Revenue</th>
+                                <th class="numeric">Profit</th>
+                                <th class="numeric">Margin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesTable"></tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
